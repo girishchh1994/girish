@@ -13,8 +13,10 @@ hello ji
 <fm:form action="useradd" commandName="user">
 <fieldset>
     <legend>Login information:</legend>
-Email<br><input type="text" name="u_name" placeholder="Enter email"><br>
-Password<br><input type="password" name="u_pwd" placeholder="Enter password"><br>
+Email<br><input type="text" name="name" placeholder="Enter email"><br>
+Password<br><input type="password" name="pwd" placeholder="Enter password"><br>
+Contact<br><input type="text" name="contact" placeholder="Enter Contact Number"><br>
+
 <input type="submit" name="submit" value="submit">
 <input type="reset" name="reset" value="reset">
 

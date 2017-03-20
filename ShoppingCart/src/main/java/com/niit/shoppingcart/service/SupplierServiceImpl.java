@@ -3,9 +3,12 @@ package com.niit.shoppingcart.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.shoppingcart.DAO.SupplierDAO;
 import com.niit.shoppingcart.model.Supplier;
+
+@Transactional
 @Service
 public class SupplierServiceImpl implements SupplierService {
 

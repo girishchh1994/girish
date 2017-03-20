@@ -32,7 +32,7 @@ public class ProductController {
 	@RequestMapping("/Product")
 	public ModelAndView showProductAdd()
 	{
-		ModelAndView mv = new ModelAndView("/ProductAdd");
+		ModelAndView mv = new ModelAndView("/Admin/ProductAdd");
 		mv.addObject("product",new Product());
 		mv.addObject("productList",productService.list());
 
@@ -43,7 +43,7 @@ public class ProductController {
 	@RequestMapping(value="/productAdd", method = RequestMethod.POST)
 	public ModelAndView insertProduct(@Valid @ModelAttribute("product") Product p, BindingResult result, Model model,
 			HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView("/ProductAdd");
+		ModelAndView mv = new ModelAndView("/Admin/ProductAdd");
 		mv.addObject("productList",productService.list());
 
 		if(p.getP_id()==0)
@@ -68,7 +68,7 @@ public class ProductController {
 	@RequestMapping("/delete_Product/{id}")
 	public ModelAndView deleteProduct(@PathVariable("id") int id)
 	{
-		ModelAndView mv = new ModelAndView("/ProductAdd");
+		ModelAndView mv = new ModelAndView("/Admin/ProductAdd");
 		boolean b=this.productService.delete(id);
 		if(b){
 			System.out.println("delete ho gaya");

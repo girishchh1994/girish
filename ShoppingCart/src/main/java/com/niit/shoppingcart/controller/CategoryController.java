@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.shoppingcart.model.Category;
-import com.niit.shoppingcart.model.Product;
 import com.niit.shoppingcart.service.CategoryService;
 
 @Controller
@@ -30,7 +29,7 @@ public class CategoryController {
 	@RequestMapping("/Category")
 	public ModelAndView showCategoryAdd()
 	{
-		ModelAndView mv = new ModelAndView("/CategoryAdd");
+		ModelAndView mv = new ModelAndView("/Admin/CategoryAdd");
 		mv.addObject("category",new Category());
 		mv.addObject("categoryList",categoryService.list());
 
@@ -40,18 +39,25 @@ public class CategoryController {
 	
 	@RequestMapping(value="/categoryAdd", method = RequestMethod.POST)
 	public ModelAndView insertProduct(@Valid @ModelAttribute("category") Category c, BindingResult result, Model model,
-			HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView("/CategoryAdd");
-		this.categoryService.save(c);
+			HttpServletRequest request)throws Exception 
+	{
+		ModelAndView mv = new ModelAndView("forward:/Category");
+		System.out.println("controller mein");
+		if (categoryService.saveOrUpdate(c) == true) {
+			
+			model.addAttribute("msg", "Successfully created/updated the caetgory");
+		} else {
+			model.addAttribute("msg", "not able created/updated the caetgory");
+		}
 
 		mv.addObject("categoryList",categoryService.list());
 		return mv;
 		
 	}
 	@RequestMapping("/delete_Category/{id}")
-	public ModelAndView deleteCategory(@PathVariable("id") int id)
+	public ModelAndView deleteCategory(@PathVariable("id") int id)throws Exception
 	{
-		ModelAndView mv = new ModelAndView("/CategoryAdd");
+		ModelAndView mv = new ModelAndView("forward:/Category");
 		boolean b=this.categoryService.delete(id);
 		if(b){
 			System.out.println("delete ho gaya");
@@ -59,4 +65,12 @@ public class CategoryController {
 	    return mv;
 	}	
 
+	@RequestMapping("/edit_Category/{id}")
+	public ModelAndView editCategory(@PathVariable("id") int id)
+	{ 
+		ModelAndView mv = new ModelAndView("/Admin/CategoryAdd");
+		System.out.println("edit vaale mein");
+		mv.addObject("category", categoryService.getCategoryByID(id));
+return mv;
+}
 }

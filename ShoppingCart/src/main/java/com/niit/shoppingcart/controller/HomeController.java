@@ -13,8 +13,6 @@ import com.niit.shoppingcart.model.User;
 
 @Controller
 public class HomeController {
-	@Autowired
-	private HttpSession session;
 	
 	@RequestMapping("/")
 	public ModelAndView showHomePage()
@@ -46,31 +44,8 @@ public class HomeController {
 		return mv;
 	}
 	
-	@RequestMapping("/validate")
-	public ModelAndView validateCredentials(@RequestParam("email") String id, @RequestParam("password") String pwd)
-	{
-		//userID=niit, pwd= niit@123
-		
-		ModelAndView mv = new ModelAndView("/Home");
 	
-		if(id.equals("niit")&&pwd.equals("niit@123"))
-		{
-			mv.addObject("successMessage","Valid Credentials");
-			session.setAttribute("loginMessage","Welcome :"+id);
-
-		}
-		
-		else
-			mv.addObject("errorMessage","Invalid Credentials");
-        return mv;
-}
-	@RequestMapping("/Logout")
-	public ModelAndView showLogout()
-	{
-		ModelAndView mv = new ModelAndView("/Home");
-		session.invalidate();
-		return mv;
-	}
+	
 	
 	
 }

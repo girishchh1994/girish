@@ -12,5 +12,6 @@ public interface CategoryDAO {
 	public boolean delete(Category c);
 	public boolean delete(int c_id);
 	public Category getCategoryByID(int c_id);
+	public boolean saveOrUpdate(Category c);
 
 }

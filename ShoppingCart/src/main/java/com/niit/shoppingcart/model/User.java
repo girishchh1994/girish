@@ -9,32 +9,50 @@ import javax.persistence.Id;
 @Entity
 public class User {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	 @Column(name = "ID")
-	private int u_id;
+	private int id;
 	 @Column(name = "UserName")
-	private String u_name;
+	private String name;
 	 @Column(name = "Password")
-	private String u_pwd;
-	public int getU_id() {
-		return u_id;
+	 private String pwd;
+     private String contact;
+	 private String Role;
+	public int getId() {
+		return id;
 	}
-	public void setU_id(int u_id) {
-		this.u_id = u_id;
+	public void setId(int id) {
+		this.id = id;
 	}
-	public String getU_name() {
-		return u_name;
+	public String getName() {
+		return name;
 	}
-	public void setU_name(String u_name) {
-		this.u_name = u_name;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getU_pwd() {
-		return u_pwd;
+	public String getPwd() {
+		return pwd;
 	}
-	public void setU_pwd(String u_pwd) {
-		this.u_pwd = u_pwd;
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+	
+	public String getContact() {
+		return contact;
+	}
+	public void setContact(String contact) {
+		this.contact = contact;
+	}
+	public String getRole() {
+		return Role;
+	}
+	public void setRole(String role) {
+		Role = role;
+	}
+
+	
 	}
 	 
 	
 
-}
+

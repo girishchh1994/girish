@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.shoppingcart.DAO.ProductDAO;
 import com.niit.shoppingcart.model.Product;
+
 @Transactional
 @Service
 public class ProductServiceImpl implements ProductService {

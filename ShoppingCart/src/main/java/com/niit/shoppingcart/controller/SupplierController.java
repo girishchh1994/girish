@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.niit.shoppingcart.model.Category;
 import com.niit.shoppingcart.model.Supplier;
 import com.niit.shoppingcart.service.SupplierService;
 
@@ -28,18 +27,19 @@ public class SupplierController {
 	
 	@RequestMapping("/Supplier")
 	public ModelAndView showSupplierAdd()
-	{
-		ModelAndView mv = new ModelAndView("/SupplierAdd");
+	{	System.out.println("Supplier Controller");
+		ModelAndView mv = new ModelAndView("/Admin/SupplierAdd");
 		mv.addObject("supplier",new Supplier());
 		mv.addObject("supplierList",supplierService.list());
 
 		return mv;
 
 	}
+	 
 	@RequestMapping(value="/supplierAdd", method = RequestMethod.POST)
 	public ModelAndView insertProduct(@Valid @ModelAttribute("supplier") Supplier s, BindingResult result, Model model,
 			HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView("/SupplierAdd");
+		ModelAndView mv = new ModelAndView("/Admin/SupplierAdd");
 		this.supplierService.save(s);
 
 		mv.addObject("supplierList",supplierService.list());
@@ -48,9 +48,9 @@ public class SupplierController {
 	}
 	
 	@RequestMapping("/delete_Supplier/{id}")
-	public ModelAndView deleteSupplier(@PathVariable("id") int id)
+	public ModelAndView deleteSupplier(@PathVariable("id") int id , Model model)throws Exception
 	{
-		ModelAndView mv = new ModelAndView("/SupplierAdd");
+		ModelAndView mv = new ModelAndView("forward:/Supplier");
 		boolean b=this.supplierService.delete(id);
 		if(b){
 			System.out.println("delete ho gaya");

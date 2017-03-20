@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
 import com.niit.shoppingcart.model.Supplier;
+
 @Repository
 public class SupplierDAOImpl implements SupplierDAO {
 

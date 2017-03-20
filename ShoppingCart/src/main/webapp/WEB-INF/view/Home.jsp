@@ -25,12 +25,9 @@
 <c:if test="${not empty loginMessage }">
 <a href="Logout">Logout</a>
 </c:if>
-<a href = "Product">Product Add</a>
-<br>
-<a href = "Category">Category Add</a>
-<br>
-<a href = "Supplier">Supplier Add</a>
-<br>
+<c:if test="${role==true }">
+<jsp:forward page="Admin/AdminHome.jsp"></jsp:forward>
+</c:if>
 ${successMessage } ${errorMessage }
 <br>
 ${loginMessage}

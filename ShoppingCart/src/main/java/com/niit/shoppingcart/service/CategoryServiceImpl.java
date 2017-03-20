@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.shoppingcart.DAO.CategoryDAO;
 import com.niit.shoppingcart.model.Category;
-import com.niit.shoppingcart.model.Category;
 
 @Transactional
 @Service
@@ -22,6 +21,10 @@ public class CategoryServiceImpl implements CategoryService {
 	public boolean save(Category c) {
 		
 			return categoryDAO.save(c);
+	}
+	public boolean saveOrUpdate(Category c)
+	{
+		return categoryDAO.saveOrUpdate(c);
 	}
 	public 	List<Category> list()
 	{

@@ -26,6 +26,19 @@ SessionFactory sessionFactory;
 				return false;
 			}
 	}
+	public boolean saveOrUpdate(Category c)
+	{
+		try{
+			sessionFactory.getCurrentSession().saveOrUpdate(c);
+			return true;
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+				return false;
+			}
+	}
+
 	public 	List<Category> list()
 	{
 		System.out.println("In category dao");
@@ -35,11 +48,13 @@ SessionFactory sessionFactory;
 	public boolean update(Category c)
 	{
 		try{
+			System.out.println("update try");
 		sessionFactory.getCurrentSession().update(c);
 		return true;
 		}
 		catch(Exception e)
 		{
+			System.out.println("update catch");
 			e.printStackTrace();
 			return false;
 		}
@@ -74,7 +89,7 @@ SessionFactory sessionFactory;
 	}
 	public Category getCategoryByID(int c_id)
 	{		System.out.println("Thori or kosish kr");
-		  return  (Category)sessionFactory.getCurrentSession().createQuery("from Category where id = '"+c_id + "'").uniqueResult();
+		  return  (Category)sessionFactory.getCurrentSession().get(Category.class,new Integer(c_id));
 
 	}
 }
